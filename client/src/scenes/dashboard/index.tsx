@@ -1,11 +1,10 @@
-import React from 'react'
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery/useMediaQuery'
-import DashboardBox from '@/components/DashboardBox'
+import Row1 from './Row1'
+import Row2 from './Row2'
+import Row3 from './Row3'
 
-type Props = {}
-
-const  gridTemplateLargeScreens = `
+const gridTemplateLargeScreens = `
   "a b c"
   "a b c"
   "a b c"
@@ -17,7 +16,7 @@ const  gridTemplateLargeScreens = `
   "g h j"
   "g h j"
 `
-const  gridTemplateSmallScreens = `
+const gridTemplateSmallScreens = `
   "a"
   "a"
   "a"
@@ -50,32 +49,28 @@ const  gridTemplateSmallScreens = `
   "j"
 `
 
-const Dashboard = (props: Props) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1200px")
-  const { palette } = useTheme()
+const Dashboard = () => {
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1200px')
   return (
-    <Box width="100%" height="100%" display="grid" gap="1.5rem"
-    sx={
-      isAboveMediumScreens ? {
-      gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-      gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-      gridTemplateAreas: gridTemplateLargeScreens
-      } : {
-        gridAutoColumns: "1fr",
-        gridAutoRows: "80px",
-        gridTemplateAreas: gridTemplateSmallScreens
-      }}>
-        
-      <DashboardBox gridArea="a" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="b" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="c" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="d" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="e" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="f" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="g" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="h" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="i" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="j" bgcolor="#fff"></DashboardBox>
+    <Box
+      width='100%' height='100%' display='grid' gap='1.5rem'
+      sx={
+      isAboveMediumScreens
+        ? {
+            gridTemplateColumns: 'repeat(3, minmax(370px, 1fr))',
+            gridTemplateRows: 'repeat(10, minmax(60px, 1fr))',
+            gridTemplateAreas: gridTemplateLargeScreens
+          }
+        : {
+            gridAutoColumns: '1fr',
+            gridAutoRows: '80px',
+            gridTemplateAreas: gridTemplateSmallScreens
+          }
+}
+    >
+      <Row1 />
+      <Row2 />
+      <Row3 />
     </Box>
   )
 }
