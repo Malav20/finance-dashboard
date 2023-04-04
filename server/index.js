@@ -37,5 +37,5 @@ mongoose.connect(process.env.MONGO_URL, {
 })
   .then(async () => {
     app.listen(PORT, () => console.log('Server listening on port ' + PORT))
-    //Transaction.insertMany(transactions)
+    // Transaction.insertMany(transactions)
   }).catch((error) => console.log('Error: ' + error))
